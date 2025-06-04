@@ -13,4 +13,4 @@ Eine schlanke Chrome‑Extension, die Cookie‑Banner automatisch erkennt, das D
 - **Default‑Verhalten** (silentMode, defaultAction) in `background.js` → `cookieGuardianSettings`.
 
 ## Datenschutz
-Alle Einstellungen & Statistiken liegen in `chrome.storage.local`. Keine Cloud‑Sync, keine externen Server.# cookie_guardian
+Alle Einstellungen & Statistiken liegen in `chrome.storage.local`. Keine Cloud‑Sync, keine externen Server.

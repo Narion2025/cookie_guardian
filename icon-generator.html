@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Guardian - Icon Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px;
+            background: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+        
+        .icons-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .icon-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .icon-box h3 {
+            margin-top: 20px;
+            color: #374151;
+        }
+        
+        canvas {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        canvas:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.4);
+        }
+        
+        .download-all {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 16px 40px;
+            font-size: 18px;
+        }
+        
+        .instructions {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            margin-top: 40px;
+        }
+        
+        .instructions h3 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+        
+        .step {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ Cookie Guardian Icon Generator</h1>
+    <p class="subtitle">Generiere die Icons für deine Chrome Extension</p>
+    
+    <div class="icons-container">
+        <div class="icon-box">
+            <canvas id="icon16" width="16" height="16"></canvas>
+            <h3>16x16</h3>
+            <button class="download-btn" onclick="downloadIcon('icon16', 'icon16.png')">
+                📥 Download icon16.png
+            </button>
+        </div>
+        
+        <div class="icon-box">
+            <canvas id="icon48" width="48" height="48"></canvas>
+            <h3>48x48</h3>
+            <button class="download-btn" onclick="downloadIcon('icon48', 'icon48.png')">
+                📥 Download icon48.png
+            </button>
+        </div>
+        
+        <div class="icon-box">
+            <canvas id="icon128" width="128" height="128"></canvas>
+            <h3>128x128</h3>
+            <button class="download-btn" onclick="downloadIcon('icon128', 'icon128.png')">
+                📥 Download icon128.png
+            </button>
+        </div>
+    </div>
+    
+    <button class="download-btn download-all" onclick="downloadAllIcons()">
+        📦 Alle Icons herunterladen
+    </button>
+    
+    <div class="instructions">
+        <h3>📋 Anleitung:</h3>
+        
+        <div class="step">
+            <div class="step-number">1</div>
+            <div>Klicke auf "Alle Icons herunterladen" oder lade sie einzeln herunter</div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <div>Erstelle einen Ordner <code>icons</code> in deinem Extension-Ordner</div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <div>Verschiebe alle 3 PNG-Dateien in den <code>icons</code> Ordner</div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">4</div>
+            <div>Deine Ordnerstruktur sollte so aussehen:
+                <br><code>No-Cookie-anymore/</code>
+                <br><code>├── manifest.json</code>
+                <br><code>├── content.js</code>
+                <br><code>├── overlay.css</code>
+                <br><code>├── popup.html</code>
+                <br><code>├── popup.js</code>
+                <br><code>├── background.js</code>
+                <br><code>└── icons/</code>
+                <br><code>&nbsp;&nbsp;&nbsp;&nbsp;├── icon16.png</code>
+                <br><code>&nbsp;&nbsp;&nbsp;&nbsp;├── icon48.png</code>
+                <br><code>&nbsp;&nbsp;&nbsp;&nbsp;└── icon128.png</code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            const scale = size / 128;
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#4f46e5');
+            gradient.addColorStop(1, '#6366f1');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Shield shape
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const shieldSize = size * 0.6;
+            
+            // Shield path
+            ctx.moveTo(centerX, centerY - shieldSize/2);
+            ctx.quadraticCurveTo(centerX - shieldSize/2, centerY - shieldSize/3, 
+                                centerX - shieldSize/2, centerY);
+            ctx.quadraticCurveTo(centerX - shieldSize/2, centerY + shieldSize/3,
+                                centerX, centerY + shieldSize/2);
+            ctx.quadraticCurveTo(centerX + shieldSize/2, centerY + shieldSize/3,
+                                centerX + shieldSize/2, centerY);
+            ctx.quadraticCurveTo(centerX + shieldSize/2, centerY - shieldSize/3,
+                                centerX, centerY - shieldSize/2);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Checkmark
+            if (size >= 48) {
+                ctx.strokeStyle = '#10b981';
+                ctx.lineWidth = size * 0.08;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.beginPath();
+                ctx.moveTo(centerX - shieldSize * 0.2, centerY);
+                ctx.lineTo(centerX - shieldSize * 0.05, centerY + shieldSize * 0.15);
+                ctx.lineTo(centerX + shieldSize * 0.2, centerY - shieldSize * 0.15);
+                ctx.stroke();
+            }
+            
+            // Cookie icon (nur bei größeren Größen)
+            if (size >= 128) {
+                ctx.fillStyle = '#f59e0b';
+                ctx.font = `${size * 0.3}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🍪', centerX, centerY + size * 0.35);
+            }
+        }
+
+        // Generate all icons
+        createIcon(document.getElementById('icon16'), 16);
+        createIcon(document.getElementById('icon48'), 48);
+        createIcon(document.getElementById('icon128'), 128);
+
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAllIcons() {
+            setTimeout(() => downloadIcon('icon16', 'icon16.png'), 100);
+            setTimeout(() => downloadIcon('icon48', 'icon48.png'), 300);
+            setTimeout(() => downloadIcon('icon128', 'icon128.png'), 500);
+            
+            setTimeout(() => {
+                alert('✅ Alle Icons wurden heruntergeladen!\n\nVerschiebe sie jetzt in den "icons" Ordner deiner Extension.');
+            }, 800);
+        }
+    </script>
+</body>
+</html>

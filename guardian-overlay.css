@@ -1,0 +1,76 @@
+/* overlay styles handled inline for minimal example *//* guardian-overlay.css */
+/* Overlay backdrop */
+.cookie-guardian-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  z-index:2147483647;
+  backdrop-filter:blur(2px);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:5vh 1rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* Popup */
+.guardian-popup{
+  width:min(420px,90vw);
+  background:#fff;
+  color:#212121;
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  font-family:system-ui,sans-serif;
+  display:flex;
+  flex-direction:column;
+  animation:fade-in .35s ease-out;
+}
+@media (prefers-color-scheme:dark){
+  .guardian-popup{background:#1e1e1e;color:#e0e0e0}
+}
+
+/* Header */
+.guardian-header{
+  padding:1rem 1.25rem;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-weight:600;
+}
+@media (prefers-color-scheme:dark){.guardian-header{border-bottom-color:#333}}
+.guardian-logo{font-size:1.1rem;display:flex;align-items:center;gap:.3rem}
+.guardian-risk{display:flex;align-items:center;gap:.5rem;font-size:.875rem}
+.risk-indicator{display:inline-block;width:10px;height:10px;border-radius:50%}
+.risk-indicator.red{background:#e53935}
+.risk-indicator.yellow{background:#fb8c00}
+.risk-indicator.green{background:#43a047}
+
+/* Content */
+.guardian-content{padding:1.25rem;flex:1 1 auto}
+.guardian-content h3{font-size:1rem;margin:0 0 .5rem;font-weight:600}
+.guardian-content p{margin:.3rem 0 1rem;font-size:.9rem;line-height:1.4}
+
+.guardian-actions{display:flex;flex-direction:column;gap:.75rem}
+.guardian-btn{
+  width:100%;padding:.8rem 1rem;border:none;border-radius:12px;
+  font-size:.95rem;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:transform .08s ease;
+}
+.guardian-btn small{font-weight:400;font-size:.75rem;opacity:.8}
+.guardian-btn.block{background:#e53935;color:#fff}
+.guardian-btn.essential{background:#fb8c00;color:#fff}
+.guardian-btn.accept{background:#43a047;color:#fff}
+
+.guardian-btn:active{transform:scale(.97)}
+.guardian-btn:hover{filter:brightness(1.05)}
+
+.guardian-footer{margin-top:1rem;text-align:center;font-size:.75rem;opacity:.7}
+
+/* Animations */
+@keyframes fade-in{
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
+}

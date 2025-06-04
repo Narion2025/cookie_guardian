@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+ <head>
+  <meta charset="utf-8" />
+  <title>Cookie Guardian</title>
+  <link rel="stylesheet" href="popup.css" />
+ </head>
+ <body>
+  <main id="app">
+   <header>
+    <h1>🛡️ Cookie Guardian</h1>
+   </header>
+
+   <section id="stats">
+    <ul>
+     <li><span id="stat-blocked">0</span> Blockiert</li>
+     <li><span id="stat-essential">0</span> Nur essenziell</li>
+     <li><span id="stat-accepted">0</span> Akzeptiert</li>
+    </ul>
+   </section>
+
+   <section id="domain-controls" hidden>
+    <h2 id="current-domain"></h2>
+    <button data-action="block">🔴 Blockieren</button>
+    <button data-action="essential">🟡 Nur notwendige</button>
+    <button data-action="accept">🟢 Alle akzeptieren</button>
+    <button id="clear-setting">⏹️ Einstellung löschen</button>
+   </section>
+
+   <footer>
+    <a id="options-link" href="#" target="_blank">Einstellungen</a>
+   </footer>
+  </main>
+  <script src="popup.js"></script>
+ </body>
+</html>
